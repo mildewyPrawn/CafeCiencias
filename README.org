@@ -5,7 +5,7 @@
 
 ** Logo
 
-   [[./imagenes/logo.jpg][logo del equipo]]
+   [[./imagenes/logoo.jpg][logo del equipo]]
 
 ** Slogan
    /Nuestros productos como la leche, ¡exquisitos!/
