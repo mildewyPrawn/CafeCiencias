@@ -1,0 +1,25 @@
+* Proyecto de Software para la materia de Riesgo Tecnológico
+
+** Nombre del equipo
+
+** Logo
+
+   [[./imagenes/logo.jpg][logo del equipo]]
+
+** Slogan
+
+** Integrantes
+   1. Galeana Araujo Emiliano. Responsable de Calidad.
+   2. Jardines Mendoza César Eduardo. Responsable Técnico.
+   3. Mendoza Castillo María Fernanda. Líder de equipo.
+
+** Misión
+
+** Visión
+
+** Links de interés
+   [[https://github.com/mildewyPrawn/CafeCiencias][Esta página]]
+   [[https://drive.google.com/open?id=13f9jp3Oli6AQF1Ap8VhoEKFXTPULumos][Trello]]
+   [[][Drive]]
+
+** 
