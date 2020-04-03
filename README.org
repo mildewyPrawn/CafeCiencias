@@ -16,8 +16,11 @@
    3. [[https://github.com/FerMendcas][Mendoza Castillo María Fernanda]]. Líder de equipo.
 
 ** Misión
+Brindar servicios de software de buena calidad, analizando los riesgos que
+podrían afectar a nuestros clientes.
 
 ** Visión
+Apoyar, creer y motivar a cualquiera en el mercado que necesite de la tecnología.
 
 ** Links de interés
    
