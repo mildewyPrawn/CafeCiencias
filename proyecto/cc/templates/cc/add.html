@@ -1,0 +1,15 @@
+{% extends "cc/base.html" %}
+
+{% load static %}
+
+{% block body_content %}
+
+<h1>Create Post Page</h1>
+<!-- <form method="add" enctype="multipart/form-data"> -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit New Post</button>
+  </form>
+<a href="{% url 'index' %}">Posts</a>
+{% endblock %}

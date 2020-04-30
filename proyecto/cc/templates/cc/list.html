@@ -1,0 +1,22 @@
+{% extends "cc/base.html" %}
+
+{% load static %}
+
+{% block body_content %}
+
+<a href="{% url 'index' %}">Home</a>
+
+<!-- POSTS -->
+<h1>MIS POSTS</h1>
+<ul>
+  {% for post in object_list %}
+  <h2>
+    {{ post.title }}
+    <a href="/{{ post.id }}">{{post.date}}</a>
+  </h2>
+  {% endfor %}
+</ul>
+
+<!-- Agregar post -->
+<a href="{% url 'add' %}">Agregar un Post</a>
+{% endblock %}
