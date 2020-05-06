@@ -8,11 +8,14 @@
     {% load static %}
     <link rel="stylesheet" href={% static "cc/base.css" %}>
     <link rel="stylesheet" href={% static "cc/blue.css" %}>
+    <link rel="stylesheet" href="{% static 'cc/bootstrap.min.css' %}">
+
     {% block css_content %}
     {% endblock %}
   </head>
   <body>
     {% block body_content %}
+    
     {% endblock %}
   </body>
 
