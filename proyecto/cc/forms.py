@@ -6,7 +6,7 @@ import django
 class PostForm(forms.ModelForm):
     title = forms.CharField(label="Title", max_length=250, required=True)
     #date = forms.DateField(disabled =True, default=django.utils.timezone.now);
-    paragraph = forms.CharField(label="Paragraph", max_length=250, required=False)
+    paragraph = forms.CharField(label="Paragraph", max_length=250, required=True)
     image = forms.FileField(label="Image", required=False)
     
 
