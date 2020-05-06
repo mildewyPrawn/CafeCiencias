@@ -24,6 +24,14 @@
       {{ post.paragraph }}
       <H2>
   </div>
+  {% if post.image == null or post.image == "" %}
+  <div>
+  </div>
+  {% else %}
+  <div>
+    <img src="{{post.image.url}}" width="1000px">
+  </div>
+  {% endif %}
 </div>
 
 <!-- TODO: poner la imagen -->
