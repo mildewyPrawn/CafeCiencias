@@ -55,6 +55,7 @@ class CreatePostView(CreateView):
         formulario = PostForm()
         contexto = {"formulario": formulario}
         return render(request, 'cc/add.html', contexto)
+    
     def post(self, request):
         formulario = PostForm(request.POST, request.FILES)
         if formulario.is_valid():
