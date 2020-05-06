@@ -55,5 +55,14 @@ class CreatePostView(CreateView):
         formulario = PostForm()
         contexto = {"formulario": formulario}
         return render(request, 'cc/add.html', contexto)
-    def post():
-        return HttpResponse("Error al seleccionar")
+    def post(self, request):
+        formulario = PostForm(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('../../../list/')
+        contexto = {"formulario": formulario}
+        return render(request, 'cc/add.html', contexto)
+
+
+
+
