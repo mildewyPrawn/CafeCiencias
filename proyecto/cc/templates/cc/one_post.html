@@ -34,14 +34,14 @@
   {% endif %}
 </div>
 
-<!-- TODO: poner la imagen -->
-<!-- {% if post.image %} -->
 <picture id="post-image">
   <center>
     <img src="../../static/cc/imag/logoo.png" width="150px">
-    <!-- <img src="{{ post.image.url }}"> -->
   </center>
 </picture>
-<!-- {% endif %} -->
+
+<div>
+  <a href="{% url 'list' %}">Lista</a>
+</div>
 
 {% endblock %}
