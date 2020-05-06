@@ -4,29 +4,12 @@
 
 {% block body_content %}
 
+<h1>Página para escribir el menú del día :3</h1>
 <!-- <form method="add" enctype="multipart/form-data"> -->
-<link rel="stylesheet" href="{% static 'cc/post.css' %}">
-<div class="return-btn" style="text-align: start">
-    <a class="btn btn-primary" href="{% url 'list' %}">Posts</a>
-</div>	
-<h1 align="center">Página para escribir el menú del día :3</h1><br>
-
-<form  method="post" enctype="multipart/form-data">
-     {% csrf_token %}
-        {{ formulario.errors }}
-        {{ formulario.label_tag }}
-        <label for="title">Title</label><br>
-        {{ formulario.title }}<br>
-        <label for="id_date">Date</label><br>
-        {{ formulario.date }}<br>
-        <label for="paragraph">Paragraph</label><br>
-        {{formulario.paragraph}}
-	    <br><label for="image">Image</label>
-        <div align="center">
-        	{{ formulario.image }}<br>
-
-        </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
     <button type="submit">Submit New Post</button>
- </form>
-
+  </form>
+<a href="{% url 'index' %}">Posts</a>
 {% endblock %}

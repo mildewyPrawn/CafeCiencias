@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView
-from django.shortcuts import render, redirect
 
 def index(request):
     '''
@@ -14,6 +13,7 @@ def index(request):
     template = 'cc/index.html'
     context = {}
     return render(request, template, context)
+
 class About(View):
     '''
     About View. Para cambiar ir a cc/templates/about
@@ -21,8 +21,10 @@ class About(View):
     '''
     template_name = 'cc/about.html'
     context = {'title': 'About us'}
+
     def get(self, request):
         return render(request, self.template_name, self.context)
+
 class OnePost(View):
     '''
     OnePost View. Para ver los posts de la comida, así es como cada post se ve
@@ -46,24 +48,7 @@ class HomePageView(ListView):
     template_name = 'cc/list.html'
 
 class CreatePostView(CreateView):
-    '''model = Post
+    model = Post
     form_class = PostForm
     template_name = 'cc/add.html'
     success_url = reverse_lazy('list')
-    '''
-    def get(self, request):
-        formulario = PostForm()
-        contexto = {"formulario": formulario}
-        return render(request, 'cc/add.html', contexto)
-    
-    def post(self, request):
-        formulario = PostForm(request.POST, request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('../../../list/')
-        contexto = {"formulario": formulario}
-        return render(request, 'cc/add.html', contexto)
-
-
-
-
