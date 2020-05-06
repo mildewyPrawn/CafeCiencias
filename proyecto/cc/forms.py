@@ -16,5 +16,5 @@ class PostForm(forms.ModelForm):
         fields = ("title",  "date","paragraph", "image")
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['date'].widget.attrs['disabled'] = 'disabled'
+        #self.fields['date'].widget.attrs['disabled'] = 'disabled'
         
