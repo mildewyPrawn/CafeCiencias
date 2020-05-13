@@ -1,10 +1,13 @@
-from .forms import PostForm
+from .forms import PostForm, SignInForm
 from .models import Post
+from .utils import IsNotAuthenticatedMixin
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView
-from django.shortcuts import render, redirect
 
 def index(request):
     '''
@@ -14,6 +17,7 @@ def index(request):
     template = 'cc/index.html'
     context = {}
     return render(request, template, context)
+
 class About(View):
     '''
     About View. Para cambiar ir a cc/templates/about
@@ -23,6 +27,7 @@ class About(View):
     context = {'title': 'About us'}
     def get(self, request):
         return render(request, self.template_name, self.context)
+    
 class OnePost(View):
     '''
     OnePost View. Para ver los posts de la comida, así es como cada post se ve
@@ -46,10 +51,8 @@ class HomePageView(ListView):
     template_name = 'cc/list.html'
 
 class CreatePostView(CreateView):
-    '''model = Post
-    form_class = PostForm
-    template_name = 'cc/add.html'
-    success_url = reverse_lazy('list')
+    '''
+    CreatePostView. Lo usamos para crear un post, solo el admin puede crearlos.
     '''
     def get(self, request):
         formulario = PostForm()
@@ -64,6 +67,40 @@ class CreatePostView(CreateView):
         contexto = {"formulario": formulario}
         return render(request, 'cc/add.html', contexto)
 
+class SignInView(IsNotAuthenticatedMixin ,View):
+    """
+    Vista para iniciar sesión
+    """
+    template = 'User/registration/login.html'
+    context = {}
 
+    def get(self, request):
+        form = SignInForm()
+        return render(request, self.template)
+    
+    def post(self, request):
+        """
+        Valida y hace el login
+        """
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            if user is not None:
+                login(request, user)
+                if request.GET.get("next", None) is not None:
+                    return redirect(request.GET.get("next"))
+                return redirect('/list/')
+            form.add_error("username","Usuario o contraseña erroneos.")
+            self.context['form'] = form
+            return render(request, self.template, self.context)
+        return render(request, self.template, self.context)
 
+# TODO: Evitar que se pueda acceder sin loggearse
 
+class LogoutView(LoginRequiredMixin, View):
+    """
+    Hace el logout, redige a la landing page
+    """
+    def get(self, request):
+        logout(request)
+        return redirect("/")

@@ -7,6 +7,7 @@
 <a href="{% url 'index' %}">Home</a>
 
 <!-- POSTS -->
+<h3>Hola {{ user }}</h3>
 <h1>MIS POSTS</h1>
 <ul>
   {% for post in object_list %}
@@ -17,6 +18,11 @@
   {% endfor %}
 </ul>
 
-<!-- Agregar post -->
+<!-- Agregar post only admin -->
+
+{% if user.is_superuser %}
 <a href="{% url 'add' %}">Agregar un Post</a>
+{% endif%}
+
+<a href="{% url 'logout' %}">Cierra tu sesión, crack</a>
 {% endblock %}

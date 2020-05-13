@@ -1,11 +1,12 @@
+from .models import Post, Usuario
+from django.contrib.auth.models import User
 from django import forms
-from .models import Post
-import datetime
 from django.contrib.admin.widgets import AdminTimeWidget
+import datetime
 import django
+
 class PostForm(forms.ModelForm):
     title = forms.CharField(label="Title", max_length=250, required=True)
-    #date = forms.DateField(disabled =True, default=django.utils.timezone.now);
     paragraph = forms.CharField(label="Paragraph", max_length=250, required=True)
     image = forms.FileField(label="Image", required=False)
     
@@ -23,3 +24,10 @@ class PostForm(forms.ModelForm):
             return self.instance.date
         else:
             return self.cleaned_data['date']
+
+class SignInForm(forms.Form):
+    """
+    Iniciar sesión
+    """
+    username = forms.CharField(label='Usuario', max_length=100)
+    password = forms.CharField(label='Contraseña')
