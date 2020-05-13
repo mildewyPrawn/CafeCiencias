@@ -8,13 +8,17 @@
 
 <!-- POSTS -->
 <h3>Hola {{ user }}</h3>
-<h1>MIS POSTS</h1>
+<h1>Revisa las comidas de la cafe uwu</h1>
 <ul>
   {% for post in object_list %}
-  <h2>
-    {{ post.title }}
-    <a href="/{{ post.id }}">{{post.date}}</a>
-  </h2>
+  <ul>
+    <h2>
+      <li>
+        {{ post.title }}
+        <a href="/{{ post.id }}">{{post.date}}</a>
+        </li>
+    </h2>
+  </ul>
   {% endfor %}
 </ul>
 
@@ -23,6 +27,8 @@
 {% if user.is_superuser %}
 <a href="{% url 'add' %}">Agregar un Post</a>
 {% endif%}
+
+<!-- Cerrar sesión -->
 
 <a href="{% url 'logout' %}">Cierra tu sesión, crack</a>
 {% endblock %}
