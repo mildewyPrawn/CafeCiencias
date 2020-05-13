@@ -3,11 +3,10 @@ from .models import Post
 from .utils import IsNotAuthenticatedMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404, render
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, TemplateView
 
 def index(request):
     '''
@@ -27,8 +26,9 @@ class About(View):
     context = {'title': 'About us'}
     def get(self, request):
         return render(request, self.template_name, self.context)
-    
-class OnePost(View):
+
+class OnePost(LoginRequiredMixin, TemplateView):
+
     '''
     OnePost View. Para ver los posts de la comida, así es como cada post se ve
     TODO: arreglar lo de la imagen
@@ -43,17 +43,18 @@ class OnePost(View):
 
         return render(request, self.template, self.context)
 
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     '''
     HomePageView View. Para ver un listado de los posts (comidas de los días)
     '''
     model = Post
     template_name = 'cc/list.html'
 
-class CreatePostView(CreateView):
+class CreatePostView(LoginRequiredMixin, TemplateView):
     '''
     CreatePostView. Lo usamos para crear un post, solo el admin puede crearlos.
     '''
+    
     def get(self, request):
         formulario = PostForm()
         contexto = {"formulario": formulario}
