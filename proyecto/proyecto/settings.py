@@ -121,6 +121,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.143buzzgame.com'
+EMAI_HOST_USER = os.environ.get('EMAI_L')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_C')
+EMAIL_PORT = 587
+
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/login/'
