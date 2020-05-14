@@ -23,12 +23,14 @@
 </ul>
 
 <!-- Agregar post only admin -->
-
-{% if user.is_superuser %}
-<a href="{% url 'add' %}">Agregar un Post</a>
-{% endif%}
+<div>
+  {% if user.is_superuser %}
+  <a href="{% url 'add' %}">Agregar un Post</a>
+  {% endif%}
+</div>
 
 <!-- Cerrar sesión -->
-
-<a href="{% url 'logout' %}">Cierra tu sesión, crack</a>
-{% endblock %}
+<div>
+  <a href="{% url 'logout' %}">Cierra tu sesión, crack</a>
+  {% endblock %}
+</div>

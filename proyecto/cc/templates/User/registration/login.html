@@ -8,6 +8,16 @@
 
 {% block body_content %}
 
+<!-- css for login -->
+<link rel="stylesheet" href="{% static 'cc/login.css' %}"> 
+
+<div class="return-btn" style="text-align: start">
+    <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
+</div>
+
+<h1 align="center">Página para iniciar la poderosa [la poderosa := sesión]</h1><br>
+
+
 <form method="post" class="from-group">
   {% csrf_token %}
   <div class="input-group">
@@ -38,7 +48,7 @@
     </div>
   </div>
   
-<button type="submit" class="btn btn-success">Iniciar Sesión</button>
+  <button type="submit" class="btn btn-success">Iniciar Sesión</button>
 </form>
 
 <p><a href='#'>Crea una cuenta</a></p>
