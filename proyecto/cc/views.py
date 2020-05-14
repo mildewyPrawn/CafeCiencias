@@ -96,8 +96,6 @@ class SignInView(IsNotAuthenticatedMixin ,View):
             return render(request, self.template, self.context)
         return render(request, self.template, self.context)
 
-# TODO: Evitar que se pueda acceder sin loggearse
-
 class LogoutView(LoginRequiredMixin, View):
     """
     Hace el logout, redige a la landing page
@@ -105,3 +103,4 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return redirect("/")
+
