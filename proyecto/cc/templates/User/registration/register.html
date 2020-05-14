@@ -1,0 +1,67 @@
+{% extends "cc/base.html" %}
+
+{% load static %}
+
+{% block css_content %}
+
+{% endblock %}
+
+{% block body_content %}
+
+<link rel="stylesheet" href="{% static 'cc/styles.css' %}">
+
+<div class="return-btn" style="text-align: start">
+  <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
+</div>
+
+<h1 align="center">Página para registrarte</h1>
+
+<body>
+  <div class="bf-back">
+
+
+    <form action="." method="POST" class="login100-form validate-form">
+      {% csrf_token %}
+      
+      <span class="login100-form-title p-b-37">
+        Registro
+      </span>
+      {% for field in form %}
+      <div class="wrap-input100 validate-input m-b-20">
+        {{ field }}
+        <span class="focus-input100"></span>
+        {{ field.errors }}
+      </div>
+      {% endfor %}
+      <br>
+      
+      <div class="container-login100-form-btn">
+        <button class="login100-form-btn">
+          Aceptar
+        </button>
+      </div>
+
+      <br>
+      
+
+    </form>
+
+
+
+  </div>
+</body>
+
+<div class="link-account">
+  <p><a href='../login'>¿Ya tienes una cuenta? inicia sesión</a></p>
+  <p><a href='#'>¿Olvidaste tu contraseña, meco?</a></p>
+  <p><a href='/about/'>Acerca de nosotros</a></p>
+</div>
+
+
+<div class="piep">
+  <h2 > Copyright © 2020. Powered by </h2>
+  <a href='https://www.143buzzgame.com/'>143 BuzzGame</a>
+</div>
+</center>
+
+{% endblock %}
