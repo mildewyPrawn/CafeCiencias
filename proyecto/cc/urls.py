@@ -1,5 +1,5 @@
 from . import views
-from .views import OnePost, HomePageView, CreatePostView, SignInView, LogoutView
+from .views import *
 from django.urls import path, include
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('list/', HomePageView.as_view(), name='list'),
     path('login/', SignInView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/', SignUpView.as_view(), name='register'),
 ]

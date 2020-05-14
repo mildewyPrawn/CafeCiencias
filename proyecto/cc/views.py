@@ -1,8 +1,9 @@
-from .forms import PostForm, SignInForm
-from .models import Post
+from .forms import PostForm, SignInForm, CreateUrs
+from .models import Post, Usuario
 from .utils import IsNotAuthenticatedMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -104,3 +105,27 @@ class LogoutView(LoginRequiredMixin, View):
         logout(request)
         return redirect("/")
 
+class SignUpView(View):
+
+    form = CreateUrs()
+    template = 'User/registration/register.html'
+    context = {'form': form}
+
+    def get(self, request):
+        return render(request, self.template, self.context)
+    
+    def post(self, request):
+        form = CreateUrs(request.POST)
+        if not form.is_valid():
+            return render(request, self.template, self.context)
+        print("es valido")
+        user = form.save(commit=False)
+        user.is_active = True
+        user.save()
+
+        user2 = Usuario(
+            user=user,
+            avatar=None
+        )
+        user2.save()
+        return redirect("login")
