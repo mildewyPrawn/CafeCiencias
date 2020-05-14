@@ -8,19 +8,20 @@
 
 {% block body_content %}
 
-<link rel="stylesheet" href="{% static 'cc/styles.css' %}">
+<!-- css for login -->
+<link rel="stylesheet" href="{% static 'cc/login.css' %}">
 
 <div class="return-btn" style="text-align: start">
   <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
 </div>
 
-<h1 align="center">Página para iniciar la poderosa [la poderosa := sesión]</h1>
+<!-- letrero -->
+<h1 align="center">Página para iniciar la poderosa [la poderosa := sesión]</h1><br>
 
 <body>
-  <div class="bf-back">
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
     <form method="post" class="from-group">
       {% csrf_token %}
-      <label class="label">Correo</label>
       <div class="input-group">
         <input type="email" class="form-control" name="username" placeholder="Email">
         <div class="input-group-append">
@@ -36,7 +37,7 @@
       </div>
       {% endfor %}
       {% endif %}
-
+      
       <div class="form-group">
         <label class="label">Contraseña</label>
         <div class="input-group">
@@ -48,24 +49,22 @@
           </div>
         </div>
       </div>
-
+      
       <button type="submit" class="btn btn-success">Iniciar Sesión</button>
     </form>
 
   </div>
 </body>
 
-<div class="link-account">
-  <p><a href='#'>Crea una cuenta</a></p>
-  <p><a href='#'>¿Olvidaste tu contraseña, meco?</a></p>
-  <p><a href='/about/'>Acerca de nosotros</a></p>
-</div>
 
-
-<div class="piep">
-  <h2 > Copyright © 2020. Powered by </h2>
-  <a href='https://www.143buzzgame.com/'>143 BuzzGame</a>
-</div>
+<p><a href='#'>Crea una cuenta</a></p>
+<p><a href='#'>¿Olvidaste tu contraseña, meco?</a></p>
+<p><a href='/about/'>Acerca de nosotros</a></p>
+<center>
+  <div>
+    Copyright © 2020. Powered by
+    <a href='https://www.143buzzgame.com/'>143 BuzzGame</a>
+  </div>
 </center>
 
 {% endblock %}
