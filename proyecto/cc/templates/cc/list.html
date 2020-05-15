@@ -12,7 +12,8 @@
 <ul>
   {% for post in object_list %}
   <h2>{{ post.title }}</h2>
-  <a href="/posts/{{ post.id }}/">{{post.date}}</a>
+  <!-- <a href="/{{ post.id }}">{{post.date}}</a> -->
+  <a href="/{{ post.id }}">{{post.date}}</a>
   {% endfor %}
 </ul>
 
