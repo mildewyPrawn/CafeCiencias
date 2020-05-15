@@ -5,6 +5,8 @@
 {% block body_content %}
 
 <!-- <form method="add" enctype="multipart/form-data"> -->
+
+  {% if user.is_superuser %}
   
   <link rel="stylesheet" href="{% static 'cc/post.css' %}">
   <div class="return-btn" style="text-align: start">
@@ -29,5 +31,19 @@
     </div>
     <button type="submit">Submit New Post</button>
   </form>
+  {% endif%}
+  
+  <div>
+
+    <picture id="post-image">
+      <center>
+        <img src="../../static/cc/imag/not_allowed.jpg" >
+        <br>
+        <h1>No Tienes permiso para ver esto, crack UnU</h1>
+        <a href="{% url 'list' %}"> Regresa por donde llegaste</a>
+      </center>
+    </picture>
+    
+  </div>
 
   {% endblock %}
