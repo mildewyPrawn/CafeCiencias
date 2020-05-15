@@ -11,14 +11,8 @@
 <h1>Revisa las comidas de la cafe uwu</h1>
 <ul>
   {% for post in object_list %}
-  <ul>
-    <h2>
-      <li>
-        {{ post.title }}
-        <a href="/{{ post.id }}">{{post.date}}</a>
-        </li>
-    </h2>
-  </ul>
+  <h2>{{ post.title }}</h2>
+  <a href="/posts/{{ post.id }}/">{{post.date}}</a>
   {% endfor %}
 </ul>
 

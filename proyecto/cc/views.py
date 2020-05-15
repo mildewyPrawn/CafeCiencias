@@ -44,7 +44,7 @@ class OnePost(LoginRequiredMixin, TemplateView):
 
         return render(request, self.template, self.context)
 
-class HomePageView(LoginRequiredMixin, TemplateView):
+class HomePageView(LoginRequiredMixin, ListView):
     '''
     HomePageView View. Para ver un listado de los posts (comidas de los días)
     '''
