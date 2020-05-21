@@ -1,20 +1,18 @@
 {% extends "cc/base.html" %}
 
 {% block body_content %}
-
-<h1>Vacas Lokas</h1>
-
+<div class="margen">
+<h1>Vakas Lokas</h1>
+<br>
 <!-- Tampoco entiendo muy bien como imprimir cosas :v -->
 <h2>Galeana Araujo Emiliano </h2>
 <h2>Jardines Mendoza César Eduardo </h2>
 <h2>Mendoza Castillo María Fernanda </h2>
-
-<div>
-  <a href="{% url 'about' %}">Da click para saber sobre nuestro proyecto :)</a>
-</div>
-
-<div>
+<br><br>
+<div class="links">
+  <a href="{% url 'about' %}">Información sobre el proyecto</a><br>
   <a href="{% url 'login' %}">Ir al proyecto</a>
+</div>
 </div>
 
 {% endblock %}

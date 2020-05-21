@@ -1,0 +1,33 @@
+body {
+  background: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)),url("./imag/background.png") no-repeat fixed;
+  background-size: 100%;
+  font-family: "Istok Web", sans-serif;
+  color: black;
+  font-size: 30px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+h1 {
+  background: rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px black;
+  font-size: 80px;
+}
+
+.margen {
+  margin-top: 100px;
+}
+
+.home {
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 35px;
+}
+
+.home a {
+  color: #cccc00;
+}
+
+.links a {
+  color: #cccc00;
+}

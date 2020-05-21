@@ -14,7 +14,7 @@
   <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
 </div>
 
-<h1 align="center">Página para iniciar la poderosa [la poderosa := sesión]</h1>
+<h1 align="center">CafeCiencias</h1>
 
 <body>
   <div class="bf-back">
@@ -22,7 +22,7 @@
       {% csrf_token %}
       <label class="label">Correo</label>
       <div class="input-group">
-        <input type="email" class="form-control" name="username" placeholder="Email">
+        <input type="email" class="form-control" name="username" placeholder="cafe@ciencias.unam.mx">
         <div class="input-group-append">
           <span class="input-group-text">
           </span>
@@ -57,7 +57,7 @@
 
 <div class="link-account">
   <p><a href='/register/'>Crea una cuenta</a></p>
-  <p><a href='#'>¿Olvidaste tu contraseña, meco?</a></p>
+  <p><a href='#'>¿Olvidaste tu contraseña?</a></p>
   <p><a href='/about/'>Acerca de nosotros</a></p>
 </div>
 
