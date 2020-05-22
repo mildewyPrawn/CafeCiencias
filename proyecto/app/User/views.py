@@ -154,30 +154,11 @@ class RegistroOrganizador(LoginRequiredMixin, View):
     def post(self, request):
         form = CreaOrganizador(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            user2 = Usuario(
-                user=user,
-                avatar = form.clean_avatar(),
-                es_Organizador = True,
-                es_Staff = False,
-            )
+            mail = form.cleaned_data.get('email')
+            user = User.objects.get(email=mail)
+            user2 = Usuario.objects.get(user=user)
+            user2.es_Organizador=True
             user2.save()
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your cafeCiencias account.'
-            message = render_to_string('acc_active_org.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-                'token':account_activation_token.make_token(user),
-            })
-            # manda correo de confirmación
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
-            )
-            email.send()
             return HttpResponse("Ha sido registrado.")
         else:
             self.context['form'] = form
