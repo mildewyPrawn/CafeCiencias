@@ -79,7 +79,7 @@ class SignUpView(View):
             )
             user2.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your PumaEventos account.'
+            mail_subject = 'Activate your cafeCiencias account.'
             message = render_to_string('acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -165,7 +165,7 @@ class RegistroOrganizador(LoginRequiredMixin, View):
             )
             user2.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your PumaEventos account.'
+            mail_subject = 'Activate your cafeCiencias account.'
             message = render_to_string('acc_active_org.html', {
                 'user': user,
                 'domain': current_site.domain,
