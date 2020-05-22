@@ -32,6 +32,7 @@ class Evento(models.Model):
     etiqueta = models.ManyToManyField(Etiqueta)
     organizador = models.ForeignKey(User, on_delete=models.CASCADE)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
+    foto = models.ImageField(upload_to='images/', blank=True, null=True)
     #periodicidad =
 
     def __str__(self):
