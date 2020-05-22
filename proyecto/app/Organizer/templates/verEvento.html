@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      {
+          box-sizing: border-box;
+      }
+      /* Set additional styling options for the columns*/
+      .column {
+          float: left;
+          width: 50%;
+      }
+
+      .row:after {
+          content: "";
+          display: table;
+          clear: both;
+      }
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,30 +56,34 @@
           <div class="content-wrapper">
             <div class="card">
               <div class="card-body">
+                <div class="row">
+                  <div class="column">
+                    <h4>Lista de comidas</h4>
+                    <lo>
+                      <dl>
+                        <li><h5>Nombre : {{evento.nombre}} </h5>
+                          <h5>Descripcion : {{evento.descripcion}} </h5>
+                          <h5>Fecha Inicio : {{evento.fecha_inicio}}</h5>
+                          <h5>Fecha Fin : {{evento.fecha_fin}}</h5>
+                          <h5>Direccion : {{evento.direccion}}</h5>
+                          <h5>Capacidad : {{evento.capacidad}}</h5>
+                          <h5>Hora de inicio : {{evento.horario_inicio}}</h5>
+                          <h5>Hora de término : {{evento.horario_fin}}</h5>
+                          <h5>Precio : {{evento.precio}}</h5>                      
 
-                <h4>Lista de comidas</h4>
-                <lo>
-                  <dl>
-                    <li><h5>Nombre :</h5>{{evento.nombre}} <br>
-                      <h5>Descripcion :</h5> <dd>{{evento.descripcion}}</dd>
-                      <h5>Fecha Inicio : {{evento.fecha_inicio}}</h5>
-                      <h5>Fecha Fin : {{evento.fecha_fin}}</h5>
-                      <h5>Direccion : {{evento.direccion}}</h5>
-                      <h5>Capacidad : {{evento.capacidad}}</h5>
-                      <h5>Hora de inicio : {{evento.horario_inicio}}</h5>
-                      <h5>Hora de término : {{evento.horario_fin}}</h5>
-                      <h5>Precio : {{evento.precio}}</h5>                      
+                          {% if user.usuario.es_Organizador == True or user.usuario.es_Staff == True %}
+                          <a href="{% url 'Invitaciones' evento.id %}">Ver apartados del menu</a>
+                          {% else %}
+                          {% endif %}
+                          <br>
+                        </li>
+                        <hr>
+                      </dl>
 
-                      {% if user.usuario.es_Organizador == True or user.usuario.es_Staff == True %}
-                      <a href="{% url 'Invitaciones' evento.id %}">Ver apartados del menu</a>
-                      {% else %}
-                      {% endif %}
-                      <br>
-                      {% if user.usuario.es_Organizador == True %}
-                      <a href="{% url 'updateEvent' evento.id %}">Editar Menú</a>
-                      {% else %}
-                      {% endif %}
-                    </li>
+                    </lo>
+                  </div>
+                  <div class="column">
+                    <h2>Información adicional</h2>
                     <li>
                       <h4>Apartar Menú</h4>
                       <a href="{% url 'registerEvent' id1=evento.id id2=user.id %}">Apartar Menú</a>
@@ -75,13 +95,22 @@
                         <a href="https://twitter.com/intent/tweet?text=Topa%20esta%20comidita%20UwU%20%23cafeCiencias%20{{ request.build_absolute_uri }}"> Twitter </a>
                       </div>
                     </li>
-                    <hr>
-                  </dl>
-                  {% if user.usuario.es_Organizador == True %}
-                  <a href="{% url 'createEvent' %}">Nuevo Menu</a>
-                  {% else %}
-                  {% endif %}
-                </lo>
+                  </div>
+                </div>
+                <div = class="row">
+                  <div class="column">
+                    {% if user.usuario.es_Organizador == True %}
+                    <a href="{% url 'createEvent' %}">Nuevo Menu</a>
+                    {% else %}
+                    {% endif %}
+                  </div>
+                  <div class="column">
+                    {% if user.usuario.es_Organizador == True %}
+                    <a href="{% url 'updateEvent' evento.id %}">Editar Menú</a>
+                    {% else %}
+                    {% endif %}
+                  </div>
+                </div>
               </div>
             </div>
 
