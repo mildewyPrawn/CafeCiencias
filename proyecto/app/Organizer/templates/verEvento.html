@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Eventos</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../../static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../static/vendors/iconfonts/puse-icons-feather/feather.css">
+    <link rel="stylesheet" href="../../../static/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../../static/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../../static/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../../static/css/demo_1/style.css">
+    <link rel="stylesheet" href="../../../static/css/demo_3/dark-theme.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="../../../static/images/favicon.png" /> </head>
+  <body class="dark-theme sidebar-dark">
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      {% include 'partials/_navbar.html' %}
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        {% include 'partials/_settings-panel.html' %}
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        {% include 'partials/_sidebar.html' %}
+        <!-- partial -->
+
+        <!-- AQUI va el codigo base!! -->
+
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="card">
+              <div class="card-body">
+
+                <h4>Lista de comidas</h4>
+                <lo>
+                  <dl>
+                    <li><h5>Nombre :</h5>{{evento.nombre}} <br>
+                      <h5>Descripcion :</h5> <dd>{{evento.descripcion}}</dd>
+                      <h5>Fecha Inicio : {{evento.fecha_inicio}}</h5>
+                      <h5>Fecha Fin : {{evento.fecha_fin}}</h5>
+                      <h5>Direccion : {{evento.direccion}}</h5>
+                      <h5>Capacidad : {{evento.capacidad}}</h5>
+                      <h5>Hora de inicio : {{evento.horario_inicio}}</h5>
+                      <h5>Hora de término : {{evento.horario_fin}}</h5>
+
+                      {% if user.usuario.es_Organizador == True or user.usuario.es_Staff == True %}
+                      <a href="{% url 'Invitaciones' evento.id %}">Ver apartados del menu</a>
+                      {% else %}
+                      {% endif %}
+                      <br>
+                      {% if user.usuario.es_Organizador == True %}
+                      <a href="{% url 'updateEvent' evento.id %}">Editar Menú</a>
+                      {% else %}
+                      {% endif %}
+                    </li>
+                    <li>
+                      <h4>Apartar Menú</h4>
+                      <a href="{% url 'registerEvent' id1=evento.id id2=user.id %}">Apartar Menú</a>
+                    </li>
+                    <li>
+                      <div class="facebook-this">
+                        <h4>Comparte el menú para que más personas coman </h4>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"> Facebook </a>
+                        <a href="https://twitter.com/intent/tweet?text=Topa%20esta%20comidita%20UwU%20%23cafeCiencias%20{{ request.build_absolute_uri }}"> Twitter </a>
+                      </div>
+                    </li>
+                    <hr>
+                  </dl>
+                  {% if user.usuario.es_Organizador == True %}
+                  <a href="{% url 'createEvent' %}">Nuevo Menu</a>
+                  {% else %}
+                  {% endif %}
+                </lo>
+              </div>
+            </div>
+
+
+            <!-- AQUI Termina el codigo base!! -->
+
+
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          {% include 'partials/_footer.html' %}
+          <!-- partial -->
+          <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+      </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../../../static/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../static/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../../static/js/shared/off-canvas.js"></script>
+    <script src="../../../static/js/shared/hoverable-collapse.js"></script>
+    <script src="../../../static/js/shared/misc.js"></script>
+    <script src="../../../static/js/shared/settings.js"></script>
+    <script src="../../../static/js/shared/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- End custom js for this page-->
+  </body>
+</html>

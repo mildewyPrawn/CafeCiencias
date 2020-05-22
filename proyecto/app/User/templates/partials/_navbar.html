@@ -1,0 +1,40 @@
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-dark">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+    <a class="navbar-brand brand-logo" href="/eventos/">
+      <img src="/../../static/images/logoo.png" alt="logo" /> </a>
+    <a class="navbar-brand brand-logo-mini" href="index.html">
+      <img src="/../../static/images/logoo.png" alt="logo" /> </a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="mdi mdi-menu"></span>
+    </button>
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+      <li class="nav-item">
+        <a href="/../eventos/home" class="nav-link">
+          <i class="fa fa-home"></i>Cafe Ciencias</a>
+      </li>
+      <li>
+        <form action="{% url 'search_results' %}" method="get">
+          <input name="q" type="text" placeholder="Buscar Comidas...">
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item dropdown d-none d-xl-inline-block">
+        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+          <span class="profile-text">{{ user }}</span>
+
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            {% if request.user.is_superuser %}
+            <a class="dropdown-item" href="/../register/Organizador">Agregar Organizador</a>
+            {% endif %}
+            <a class="dropdown-item" href="/../logout">Cerrar sesión</a>
+          </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+      <span class="icon-menu"></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registro Vakas Lokas</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../../static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../static/vendors/iconfonts/puse-icons-feather/feather.css">
+    <link rel="stylesheet" href="../../../static/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../../static/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../../static/css/shared/style.css">
+    <link rel="stylesheet" href="../../../static/css/shared/test.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../../static/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="../../../static/images/favicon.png" /> </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+          <div class="row w-100">
+            <div class="col-lg-4 mx-auto">
+              
+              <div class="auto-form-wrapper">
+                  <h2 class="text-center mb-4">Registro</h2>
+                <form method="post" action="#" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label class="label">Nombre</label>
+                    {% if form.first_name.value %}
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="first_name" value="{{ form.first_name.value }}" placeholder="Nombre">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="first_name" placeholder="Nombre">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div class="form-group">
+                    <label class="label">Apellido</label>
+                    {% if form.last_name.value %}
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="last_name" value="{{ form.last_name.value }}" placeholder="Apellido">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="last_name" placeholder="Apellidos">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div class="form-group">
+                    <label class="label">Email</label>
+                    {% if form.email.value %}
+                    <div class="input-group">
+                      <input type="email" class="form-control" name="email" value="{{ form.email.value }}" placeholder="Email">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="input-group">
+                      <input type="email" class="form-control" name="email" placeholder="Email">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                    <div class="input-error">
+                      {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  <div class="form-group">
+                    <label class="label">Contraseña</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" name="password1" placeholder="Password">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}
+                    <div class="input-error">
+                      {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  <div class="form-group">
+                    <label class="label">Confirmar contraseña</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <!--<i class="mdi mdi-check-circle-outline"></i>-->
+                        </span>
+                      </div>
+                    </div>
+                    {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                    <div class="input-error">
+                      {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  <label class="label">Avatar(opcional)</label>
+                  {% if form.avatar.value %}
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="file" class="form-control-file" name="avatar" value="{{ form.avatar.value }}">
+                      <!--<div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                      </div>-->
+                    </div>
+                  </div>
+                  {% else %}
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="file" class="form-control-file" name="avatar">
+                      <!--<div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                      </div>-->
+                    </div>
+                  </div>
+                  {% endif %}
+                  <label class="label">Entidad</label>
+                  <select name="entidad" class="form-control" required>
+                        <option value="0">Seleccione una opción(Entidad)</option>
+                        <option value="CENTRO DE FISICA APLICADA Y TECNOLOGIA AVANZADA">CENTRO DE FISICA APLICADA Y TECNOLOGIA AVANZADA</option>
+                        <option value="CENTRO DE INVESTIGACIONES EN ECOSISTEMAS">CENTRO DE INVESTIGACIONES EN ECOSISTEMAS</option>
+                        <option value="CENTRO DE NANOCIENCIAS Y NANOTECNOLOGIA">CENTRO DE NANOCIENCIAS Y NANOTECNOLOGIA</option>
+                        <option value="CENTRO PENINSULAR EN HUMANIDADES Y CIENCIAS SOCIAL">CENTRO PENINSULAR EN HUMANIDADES Y CIENCIAS SOCIAL</option>
+                        <option value="E.N.E.S. LEON">E.N.E.S. LEON</option>
+                        <option value="E.N.E.S. LEON">E.N.E.S. LEON</option>
+                        <option value="E.N.E.S. LEON (CIENCIAS POLITICAS)">E.N.E.S. LEON (CIENCIAS POLITICAS)</option>
+                        <option value="E.N.E.S. LEON (CONTADURIA)">E.N.E.S. LEON (CONTADURIA)</option>
+                        <option value="E.N.E.S. LEON (ECONOMIA)">E.N.E.S. LEON (ECONOMIA)</option>
+                        <option value="E.N.E.S. LEON (FILOSOFIA)">E.N.E.S. LEON (FILOSOFIA)</option>
+                        <option value="E.N.E.S. LEON (GENOMICAS)">E.N.E.S. LEON (GENOMICAS)</option>
+                        <option value="E.N.E.S. MORELIA (ARTES PLASTICAS)">E.N.E.S. MORELIA (ARTES PLASTICAS)</option>
+                        <option value="E.N.E.S. MORELIA (CIENCIAS POLITICAS)">E.N.E.S. MORELIA (CIENCIAS POLITICAS)</option>
+                        <option value="E.N.E.S. MORELIA (CIENCIAS)">E.N.E.S. MORELIA (CIENCIAS)</option>
+                        <option value="E.N.E.S. MORELIA (FILOSOFIA)">E.N.E.S. MORELIA (FILOSOFIA)</option>
+                        <option value="E.N.E.S. MORELIA (MUSICA)">E.N.E.S. MORELIA (MUSICA)</option>
+                        <option value="ESCUELA NACIONAL DE ENFERMERIA Y OBSTETRICIA">ESCUELA NACIONAL DE ENFERMERIA Y OBSTETRICIA</option>
+                        <option value="ESCUELA NACIONAL DE TRABAJO SOCIAL">ESCUELA NACIONAL DE TRABAJO SOCIAL</option>
+                        <option value="F.E.S. ACATLAN (ACTUARIA)">F.E.S. ACATLAN (ACTUARIA)</option>
+                        <option value="F.E.S. ACATLAN (ARQUITECTURA)">F.E.S. ACATLAN (ARQUITECTURA)</option>
+                        <option value="F.E.S. ACATLAN (ARTES PLASTICAS)">F.E.S. ACATLAN (ARTES PLASTICAS)</option>
+                        <option value="F.E.S. ACATLAN (C IDIOMAS)">F.E.S. ACATLAN (C IDIOMAS)</option>
+                        <option value="F.E.S. ACATLAN (CIENCIAS POLITICAS)">F.E.S. ACATLAN (CIENCIAS POLITICAS)</option>
+                        <option value="F.E.S. ACATLAN (COMPUTACION)">F.E.S. ACATLAN (COMPUTACION)</option>
+                        <option value="F.E.S. ACATLAN (DERECHO)">F.E.S. ACATLAN (DERECHO)</option>
+                        <option value="F.E.S. ACATLAN (ECONOMIA)">F.E.S. ACATLAN (ECONOMIA)</option>
+                        <option value="F.E.S. ACATLAN (FILOSOFIA)">F.E.S. ACATLAN (FILOSOFIA)</option>
+                        <option value="F.E.S. ACATLAN (INGENIERIA)">F.E.S. ACATLAN (INGENIERIA)</option>
+                        <option value="F.E.S. ACATLAN (LENGUA EXTRANJERA)">F.E.S. ACATLAN (LENGUA EXTRANJERA)</option>
+                        <option value="F.E.S. ARAGON (AGROPECUARIO)">F.E.S. ARAGON (AGROPECUARIO)</option>
+                        <option value="F.E.S. ARAGON (ARQUITECTURA)">F.E.S. ARAGON (ARQUITECTURA)</option>
+                        <option value="F.E.S. ARAGON (CIENCIAS POLITICAS)">F.E.S. ARAGON (CIENCIAS POLITICAS)</option>
+                        <option value="F.E.S. ARAGON (DERECHO)">F.E.S. ARAGON (DERECHO)</option>
+                        <option value="F.E.S. ARAGON (ECONOMIA)">F.E.S. ARAGON (ECONOMIA)</option>
+                        <option value="F.E.S. ARAGON (FILOSOFIA)">F.E.S. ARAGON (FILOSOFIA)</option>
+                        <option value="F.E.S. ARAGON (INGENIERIA)">F.E.S. ARAGON (INGENIERIA)</option>
+                        <option value="F.E.S. CUAUTITLAN (AGRICOLA)">F.E.S. CUAUTITLAN (AGRICOLA)</option>
+                        <option value="F.E.S. CUAUTITLAN (ARTES PLASTICAS)">F.E.S. CUAUTITLAN (ARTES PLASTICAS)</option>
+                        <option value="F.E.S. CUAUTITLAN (CONTADURIA)">F.E.S. CUAUTITLAN (CONTADURIA)</option>
+                        <option value="F.E.S. CUAUTITLAN (INGENIERIA)">F.E.S. CUAUTITLAN (INGENIERIA)</option>
+                        <option value="F.E.S. CUAUTITLAN (QUIMICA)">F.E.S. CUAUTITLAN (QUIMICA)</option>
+                        <option value="F.E.S. CUAUTITLAN (TECNOLOGIA)">F.E.S. CUAUTITLAN (TECNOLOGIA)</option>
+                        <option value="F.E.S. CUAUTITLAN (VETERINARIA)">F.E.S. CUAUTITLAN (VETERINARIA)</option>
+                        <option value="F.E.S. IZTACALA">F.E.S. IZTACALA</option>
+                        <option value="F.E.S. IZTACALA (BIOLOGIA)">F.E.S. IZTACALA (BIOLOGIA)</option>
+                        <option value="F.E.S. IZTACALA (ENFERMERIA)">F.E.S. IZTACALA (ENFERMERIA)</option>
+                        <option value="F.E.S. IZTACALA (MEDICINA)">F.E.S. IZTACALA (MEDICINA)</option>
+                        <option value="F.E.S. IZTACALA (OPTOMETRIA)">F.E.S. IZTACALA (OPTOMETRIA)</option>
+                        <option value="F.E.S. IZTACALA (PSICOLOGIA)">F.E.S. IZTACALA (PSICOLOGIA)</option>
+                        <option value="F.E.S. ZARAGOZA">F.E.S. ZARAGOZA</option>
+                        <option value="F.E.S. ZARAGOZA (BIOLOGIA)">F.E.S. ZARAGOZA (BIOLOGIA)</option>
+                        <option value="F.E.S. ZARAGOZA (ENFERMERIA)">F.E.S. ZARAGOZA (ENFERMERIA)</option>
+                        <option value="F.E.S. ZARAGOZA (MEDICINA)">F.E.S. ZARAGOZA (MEDICINA)</option>
+                        <option value="F.E.S. ZARAGOZA (PSICOLOGIA)">F.E.S. ZARAGOZA (PSICOLOGIA)</option>
+                        <option value="F.E.S. ZARAGOZA (QUIMICAS)">F.E.S. ZARAGOZA (QUIMICAS)</option>
+                        <option value="F.E.S. ZARAGOZA (TRABAJO SOCIAL)">F.E.S. ZARAGOZA (TRABAJO SOCIAL)</option>
+                        <option value="FAC. DE MEDICINA VETERINARIA Y ZOOTECNIA">FAC DE MED VETERINARIA Y ZOOTECNIA</option>
+                        <option value="FACULTAD DE ARQUITECTURA">FACULTAD DE ARQUITECTURA</option>
+                        <option value="FACULTAD DE ARTES Y DISEÑO">FACULTAD DE ARTES Y DISEÑO</option>
+                        <option value="FACULTAD DE CIENCIAS">FACULTAD DE CIENCIAS</option>
+                        <option value="FAC. DE CIENCIAS POLITICAS Y SOCIALES">FACULTAD DE CIENCIAS POLITICAS Y SOCIALES</option>
+                        <option value="FAC. DE CONTADURIA Y ADMINISTRACION">FACULTAD DE CONTADURIA Y ADMON</option>
+                        <option value="FACULTAD DE DERECHO">FACULTAD DE DERECHO</option>
+                        <option value="FACULTAD DE ECONOMIA">FACULTAD DE ECONOMIA</option>
+                        <option value="FACULTAD DE FILOSOFIA Y LETRAS">FACULTAD DE FILOSOFIA Y LETRAS</option>
+                        <option value="FACULTAD DE INGENIERIA">FACULTAD DE INGENIERIA</option>
+                        <option value="FACULTAD DE MEDICINA">FACULTAD DE MEDICINA</option>
+                        <option value="FACULTAD DE MUSICA">FACULTAD DE MUSICA</option>
+                        <option value="FACULTAD DE ODONTOLOGIA">FACULTAD DE ODONTOLOGIA</option>
+                        <option value="FACULTAD DE PSICOLOGIA">FACULTAD DE PSICOLOGIA</option>
+                        <option value="FACULTAD DE QUIMICA">FACULTAD DE QUIMICA</option>
+                        <option value="INSTITUTO DE BIOTECNOLOGIA">INSTITUTO DE BIOTECNOLOGIA</option>
+                        <option value="INSTITUTO DE ENERGIAS RENOVABLES">INSTITUTO DE ENERGIAS RENOVABLES</option>
+                  </select><br>
+                  <!-- if form.email.value //checha si hay un valor ya dado y lo regresa, mantiene los datos
+                       value={{ form.email.value }}
+                       {% if form.email.errors %}
+                       {% for error in form. %}
+                       div class email-errors>
+                       {{error}}
+                       {% endfor %}
+                       {% endif %}
+                    -->
+                  <div class="form-group">
+                    <button class="btn btn-primary submit-btn btn-block">Confirmar</button>
+                  </div>
+                  <div class="text-block text-center my-3">
+                    <span class="text-small font-weight-semibold">¿Ya tienes una cuenta?</span>
+                    <a href="/login/" class="text-black text-small">Inicia Sesión</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../../static/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../static/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="../../../static/js/shared/off-canvas.js"></script>
+    <script src="../../../static/js/shared/hoverable-collapse.js"></script>
+    <script src="../../../static/js/shared/misc.js"></script>
+    <script src="../../../static/js/shared/settings.js"></script>
+    <script src="../../../static/js/shared/todolist.js"></script>
+    <!-- endinject -->
+  </body>
+</html>

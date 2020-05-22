@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="../../../static/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+
+{% load static %}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          {% if user.usuario.avatar == null or user.usuario.avatar == "" %}
+          <div class="profile-image">
+            <img src="../../static/images/faces/perrito.jpg" alt="profile image">
+          </div>
+          {% else %}
+          <div class="profile-image">
+            <img src="{{ user.usuario.avatar.url }}" width="1000px">
+          </div>
+          {% endif %}
+          
+          <div class="text-wrapper">
+            <p class="profile-name">{{ user }}</p>
+          </div>
+        </div>
+        {% if user.usuario.es_Organizador == True %}
+        <button onclick="window.location.href = '/eventos/all';" class="btn btn-success btn-sm btn-block">Mis comidas </button>
+        {% else %}
+        {% endif %}
+        <div>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/../../eventos/all">
+        <i class="menu-icon fa fa-tag"></i>
+        <span class="menu-title">Todos las comidas</span>
+      </a>
+    </li>
+    {% if user.usuario.es_Organizador == True %}
+    <li class="nav-item">
+      <a class="nav-link" href="/../../eventos/misEventos">
+        <i class="menu-icon fa fa-tag"></i>
+        <span class="menu-title">Mis comidas Publicadas</span>
+      </a>
+    </li>
+    {% else %}
+    {% endif %}
+    {% if user.usuario.es_Organizador == True %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'createEvent' %}">
+      <!-- <a class="nav-link" href="/../../MisStaffs/listStaffs"> -->
+        <i class="menu-icon fa fa-calendar-o"></i>
+        <span class="menu-title">Crear Comida</span>
+      </a>
+    </li>
+    {% else %}
+    {% endif %}    
+    <li class="nav-item">
+      <a class="nav-link" href="/../../eventos/home">
+        <i class="menu-icon fa fa-tags"></i>
+        <span class="menu-title">Categorias</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=aly">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">Tía aly</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=ciencias">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">Ciencias</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=maestra">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">maestra</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=dulces">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">dulces</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=especiales">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">especiales</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=frituras">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">frituras</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=chinos">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">oriental</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/search/?q=otros">
+        <i class="menu-icon fa  fa-star-half-full"></i>
+        <span class="menu-title">Otros</span>
+      </a>
+    </li>
+  </ul>
+</nav>
