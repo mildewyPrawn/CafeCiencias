@@ -142,7 +142,8 @@ class SearchEventsView(ListView):
             Q(descripcion__icontains=query) |
             Q(direccion__icontains=query) |
             Q(fecha_inicio__icontains=query) | 
-            Q(etiqueta__nombre__icontains=query)
+            Q(etiqueta__nombre__icontains=query) |
+            Q(precio__icontains=query)
         )
         return object_list
 

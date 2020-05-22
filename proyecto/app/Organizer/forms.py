@@ -9,7 +9,7 @@ class EventosForm(forms.ModelForm):
 	    model= Evento
 	    fields= ['nombre','descripcion','fecha_inicio', 'fecha_fin', 
 		     'direccion', 'horario_inicio', 'horario_fin', 'capacidad', 
-		     'etiqueta','organizador']
+		     'etiqueta','organizador', 'precio']
 		
 class StaffForm(forms.ModelForm):
     """

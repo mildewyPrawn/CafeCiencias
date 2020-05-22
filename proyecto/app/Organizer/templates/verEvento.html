@@ -52,6 +52,7 @@
                       <h5>Capacidad : {{evento.capacidad}}</h5>
                       <h5>Hora de inicio : {{evento.horario_inicio}}</h5>
                       <h5>Hora de término : {{evento.horario_fin}}</h5>
+                      <h5>Precio : {{evento.precio}}</h5>                      
 
                       {% if user.usuario.es_Organizador == True or user.usuario.es_Staff == True %}
                       <a href="{% url 'Invitaciones' evento.id %}">Ver apartados del menu</a>
