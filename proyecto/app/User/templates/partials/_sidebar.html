@@ -9,21 +9,19 @@
         <div class="user-wrapper">
           {% if user.usuario.avatar == null or user.usuario.avatar == "" %}
           <div class="profile-image">
-            <img src="../../static/images/faces/perrito.jpg" alt="profile image">
+            <img src="../../static/images/faces/perrito.jpg" alt=".">
           </div>
           {% else %}
           <div class="profile-image">
             <img src="{{ user.usuario.avatar.url }}" width="1000px">
           </div>
           {% endif %}
-          
           <div class="text-wrapper">
             <p class="profile-name">{{ user }}</p>
           </div>
         </div>
         {% if user.usuario.es_Organizador == True %}
         <button onclick="window.location.href = '/eventos/all';" class="btn btn-success btn-sm btn-block">Mis comidas </button>
-        {% else %}
         {% endif %}
         <div>
         </div>
